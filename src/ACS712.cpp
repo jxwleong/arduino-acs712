@@ -73,6 +73,6 @@ float ACS712::getCurrentAC(uint16_t frequency) {
 		measurements_count++;
 	}
 
-	float Irms = sqrt(Isum / measurements_count) / ADC_SCALE * VREF / sensitivity;
+	float Irms = sqrt(Isum / measurements_count) / adcScale * referenceVoltage / sensitivity;
 	return Irms;
 }
