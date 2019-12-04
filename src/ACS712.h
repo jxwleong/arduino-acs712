@@ -16,7 +16,7 @@ public:
 	void setSensitivity(float sens);
   void setReferenceVoltage(float volts);
   void setAdcResolution(float adcResolution);
-}
+
   float getVoltage();
 	float getCurrentDC();
 	float getCurrentAC(uint16_t frequency = 50);
