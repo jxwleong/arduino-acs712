@@ -15,7 +15,7 @@ public:
 	void setZeroPoint(int _zero);
 	void setSensitivity(float sens);
   void setReferenceVoltage(float volts);
-  void setAdcResolution(float adcResolution)
+  void setAdcResolution(float adcResolution);
 }
   float getVoltage();
 	float getCurrentDC();
