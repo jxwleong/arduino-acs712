@@ -46,13 +46,8 @@ float ACS712::getVoltage(){
 	int16_t acc = 0;
 	for (int i = 0; i < 10; i++) {
 		acc += analogRead(pin);
-    Serial.println(acc);
 	}  
-  float V = (float)acc / 10.0 / adcScale * voltageReference;
-  Serial.println("");
-  Serial.print("Vref : ");
-  Serial.print(voltageReference);
- Serial.println(acc/ 10.0);
+	float V = (float)acc / 10.0 / adcScale * voltageReference;
 	return V;
 }
 
