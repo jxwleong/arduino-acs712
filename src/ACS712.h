@@ -14,7 +14,7 @@ public:
 	int calibrate();
 	void setZeroPoint(int _zero);
 	void setSensitivity(float sens);
-  void setReferenceVoltage(float volts);
+  void setVoltageReference(float volts);
   void setAdcResolution(float adcResolution);
 
   float getVoltage();
@@ -25,7 +25,7 @@ private:
 	int zero = 512;
 	float sensitivity;
 	uint8_t pin;
-  float referenceVoltage = 3.3;   // Vcc of the MCU
+  float voltageReference = 3.3;   // Vcc of the MCU
   float adcScale = 1024.0;           // ADC resolution
 };
 

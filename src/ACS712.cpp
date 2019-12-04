@@ -34,8 +34,8 @@ void ACS712::setSensitivity(float sens) {
 	sensitivity = sens;
 }
 
-void ACS712::setReferenceVoltage(float volts){
-  referenceVoltage = volts;
+void ACS712::setVoltageReference(float volts){
+  voltageReference = volts;
 }
 
 void ACS712::setAdcResolution(float adcResolution){
@@ -45,9 +45,14 @@ void ACS712::setAdcResolution(float adcResolution){
 float ACS712::getVoltage(){
 	int16_t acc = 0;
 	for (int i = 0; i < 10; i++) {
-		acc += analogRead(pin) - zero;
+		acc += analogRead(pin);
+    Serial.println(acc);
 	}  
-  float V = (float)acc / 10.0 / adcScale * referenceVoltage;
+  float V = (float)acc / 10.0 / adcScale * voltageReference;
+  Serial.println("");
+  Serial.print("Vref : ");
+  Serial.print(voltageReference);
+ Serial.println(acc/ 10.0);
 	return V;
 }
 
@@ -56,7 +61,7 @@ float ACS712::getCurrentDC() {
 	for (int i = 0; i < 10; i++) {
 		acc += analogRead(pin) - zero;
 	}
-	float I = (float)acc / 10.0 / adcScale * referenceVoltage / sensitivity;
+	float I = (float)acc / 10.0 / adcScale * voltageReference / sensitivity;
 	return I;
 }
 
@@ -73,6 +78,6 @@ float ACS712::getCurrentAC(uint16_t frequency) {
 		measurements_count++;
 	}
 
-	float Irms = sqrt(Isum / measurements_count) / adcScale * referenceVoltage / sensitivity;
+	float Irms = sqrt(Isum / measurements_count) / adcScale * voltageReference / sensitivity;
 	return Irms;
 }
